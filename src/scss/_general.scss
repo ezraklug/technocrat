@@ -7,7 +7,7 @@ html {
 }
 body {
   @include font-style(body);
-  background-color: colour(body-bg);
+  background-color: colour(bg-body);
 }
 
 // Headers
