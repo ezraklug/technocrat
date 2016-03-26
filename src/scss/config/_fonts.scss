@@ -154,6 +154,18 @@ $_fonts: (
       @include font-size(text-small);
     }
   }
+  @if (entry-footnotes == $style) {
+    @extend %text-smaller;
+    @include k-media-above( break(medium) ) {
+      @include font-size(text-small);
+    }
+  }
+  @if (entry-references == $style) {
+    @extend %text-smaller;
+    @include k-media-above( break(medium) ) {
+      @include font-size(text-small);
+    }
+  }
   @if (entry-footer-meta == $style) {
     @extend %body-normal; // Below the fold
     @include font-size(text-smaller);
