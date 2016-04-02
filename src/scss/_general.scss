@@ -66,9 +66,6 @@ a {
   &:hover {
     transition: color .4s ease;
   }
-  &:active {
-    outline: 0;
-  }
   &:focus {
     outline: thin dotted;
   }
@@ -76,7 +73,7 @@ a {
 
 // Reset-like things with variables or WordPress-specific styling
 abbr {
-  border-bottom: 1px dotted rgba( colour(text), .4 );
+  //border-bottom: 1px dotted rgba( colour(text), .4 ); // Normalize 4.0.0 testing
   line-height: 0;
   &:hover {
     cursor: help;
@@ -91,7 +88,7 @@ address {
 }
 b,
 strong {
-  font-weight: font(body-bold); // Potentially superfluous; normalize.css sets both to font-weight: bold;
+  //font-weight: font(body-bold); // Potentially superfluous; normalize.css sets both to font-weight: bold; // Normalize 4.0.0 testing
 }
 cite,
 em,
@@ -119,7 +116,7 @@ hr {
   height: 1px;
 }
 mark {
-  background: transparent; // Reset normalize.css
+  background-color: transparent; // Reset normalize.css
   color: colour(highlight); // Reset normalize.css
   text-decoration: none;
 }
@@ -264,7 +261,7 @@ th {
 // == MEDIA == //
 
 figure {
-  @extend %spacer-reset; // Reset normalize.css
+  @extend %spacer-reset; // Reset normalize.css; we control margins for figures in this theme
 }
 embed,
 iframe,
