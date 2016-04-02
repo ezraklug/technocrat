@@ -143,8 +143,7 @@ module.exports = {
     // Chunks are arrays of globs matching source files that combine to provide specific functionality defined on a line-by-line basis to improve git workflow
   , chunks: {
       header: [
-        modules+'fontfaceobserver/fontfaceobserver.js'
-      , modules+'svg4everybody/dist/svg4everybody.js'
+        modules+'svg4everybody/dist/svg4everybody.js'
       , src+'js/core-header.js'
       ]
     , footer: [
@@ -155,6 +154,8 @@ module.exports = {
       , modules+'selectric/public/jquery.selectric.js'
       , modules+'timeago/jquery.timeago.js'
       , modules+'autosize/dist/autosize.js'
+      , modules+'fontfaceobserver/fontfaceobserver.js'
+      , src+'js/fontfaceobserver.js'
       , src+'js/responsive-menu.js'
       , src+'js/skip-link-focus-fix.js'
       , src+'js/core-footer.js'
