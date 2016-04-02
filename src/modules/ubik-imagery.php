@@ -159,13 +159,9 @@ function pendrell_sizes_default( $default = '', $size = '', $width = '', $contex
   if ( ubik_imagery_context( $context, 'content' ) === true )
     return $viewport . 'vw';
 
-  // Test the context object for various scenarios
-  $group        = ubik_imagery_context( $context, 'group' );
-  $static       = ubik_imagery_context( $context, 'static' );
-
   // Static galleries are a special case; for everything else we can safely default back to the full viewport minus basic page margins
   // This presumes that Ubik Imagery's sizing conventions are being followed; see: https://github.com/synapticism/ubik-imagery
-  if ( $group === true && $static === true ) {
+  if ( ubik_imagery_context( $context, 'group' ) === true && ubik_imagery_context( $context, 'static' ) === true ) {
     $factor = 2; // $group is true so we expect two images in a row by default
     if ( in_array( $size, array( 'third', 'third-square' ) ) )
       $factor = 3;
