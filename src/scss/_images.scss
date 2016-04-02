@@ -59,10 +59,8 @@ figure.wp-caption,
   }
 }
 
-// Specific to the image wrapper
+// Specific to the image wrapper; forces full-width images on small viewports
 figure.wp-caption {
-
-  // Force full-width images on small viewports
   @include k-media-below( break(tiny) ) {
     .entry-content & {
       margin-left: spacer(-1/2) !important;
@@ -72,7 +70,8 @@ figure.wp-caption {
         border-radius: 0;
       }
       .wp-caption-text {
-        @include rem( margin-left, spacer(1/2) ); // Should match left page margin
+        @include rem( padding-left, spacer(1/2) ); // Should match padding in `_layout.scss`
+        @include rem( padding-right, spacer(1/2) );
       }
     }
   }
