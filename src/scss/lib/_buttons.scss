@@ -141,32 +141,38 @@
 // == LAYOUT == //
 
 // Button group; apply to an element with only buttons as immediate children
-@mixin button-group( $float: right, $margin: 8px ) {
-  @include rem( margin-left, spacer(1/2) - $margin );
-  float: unquote( $float );
+@mixin button-group( $dir: right, $margin: 8px ) {
+  $dir1: unquote( $dir );
+  $dir2: k-opposite( $dir1 );
+
+  @include rem( margin-#{$dir2}, spacer(1/2) - $margin );
+  float: unquote( $dir1 );
   > * {
-    @include rem( margin-left, $margin );
-    float: unquote( k-opposite( $float ) );
+    @include rem( margin-#{$dir2}, $margin );
+    float: unquote( k-opposite( $dir1 ) );
   }
 }
 
 // Button merge; apply to a button group to cause buttons to stick together
-@mixin button-merge {
+@mixin button-merge( $dir: right ) {
+  $dir1: unquote( $dir );
+  $dir2: k-opposite( $dir1 );
+
   > :not(:first-child):not(:last-child) {
     border-radius: 0;
   }
   > :first-child:not(:only-of-type) {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+    border-top-#{$dir1}-radius: 0;
+    border-bottom-#{$dir1}-radius: 0;
   }
   > :last-child:not(:only-of-type) {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    border-top-#{$dir2}-radius: 0;
+    border-bottom-#{$dir2}-radius: 0;
   }
   > :not(:last-child):not(:only-of-type) {
-    border-right: 0;
+    border-#{$dir1}: 0;
   }
   > * + * {
-    margin-left: 0;
+    margin-#{$dir2}: 0;
   }
 }

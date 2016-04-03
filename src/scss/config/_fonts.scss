@@ -239,12 +239,22 @@ $_fonts: (
 
   // Image overlays
   @if (image-overlay-title == $style) {
-    @include font-size( text, 0, 25 ); // Breaks the visual rhythm on purpose
+    @include font-size( text, 0, 15 ); // Breaks the visual rhythm on purpose
     color: white();
     text-align: center;
-    @include k-media-above( break(medium) ) {
+    @include k-media-above( break(large) ) {
       @include font-size(text-bigger);
       @include text-shadow-bigger;
+    }
+    .gallery-static & {
+      @include k-media-below( break(small) ) {
+        @include font-size( text-smaller, 0, 15 );
+      }
+    }
+    .gallery-static.gallery-columns-4 & {
+      @include k-media-below( break(medium) ) {
+        @include font-size( text-smaller, 0, 15 );
+      }
     }
   }
   @if (image-overlay-caption == $style) {

@@ -75,6 +75,12 @@
       opacity: 1; // Apply the `no-fade` class to the parent `figure` element to always show caption and metadata
     }
   }
+  @include k-media-below( break(small) ) {
+    #{$caption},
+    #{$metadata} {
+      opacity: 1; // Always show overlays on small viewports
+    }
+  }
 }
 
 // To be applied to the container element around an image standing in for a link (e.g. post thumbnail, gallery item)

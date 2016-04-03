@@ -36,6 +36,12 @@ input[type="reset"] {
 .buttons-merge {
   @include button-merge;
 }
+.buttons-left {
+  @include button-group(left);
+}
+.buttons-merge-left {
+  @include button-merge(left);
+}
 
 
 
@@ -130,8 +136,8 @@ label {
 
 // == RESPONSIVE MENU == //
 
-// Responsive menu toggle
-.menu-toggle { // Menu toggle for mobile phones and small screens
+// Responsive menu toggle for mobile phones and small screens
+.menu-toggle {
   @include k-media-above( break(medium) ) {
     display: none;
   }
@@ -149,6 +155,15 @@ label {
   @include font-size(text-smallest); // Keeps the search button from getting too large for some reason; @TODO: puzzle this bug out
   overflow: hidden; // Fixes weird IE display (July 8, 2015)
   width: 60%;
+  .site-interface & {
+    display: none;
+    @include k-media-above( break(medium) ) {
+      display: block;
+      float: right;
+      max-width: 300px;
+      @include rem( margin-left, spacer(1/2) );
+    }
+  }
   .site-navigation & {
     @include rem( margin-bottom, spacer(1/2) );
     width: 100%;
@@ -159,7 +174,7 @@ label {
 }
 .search-field-wrap {
   overflow: hidden;
-  padding-right: spacer(1/2);
+  padding-right: spacer(1/4);
 }
 .search-field {
   width: 100%;
@@ -196,11 +211,15 @@ select {
   position: fixed;
   right: 99999%;
   &:focus {
+    margin: 0; // Resets `.buttons-left` and allows for this element to be placed earlier in the actual markup
     opacity: 1;
     outline-width: 1px;
     position: static;
     transition: opacity .3s;
   }
+}
+.buttons-skip-link {
+  margin: 0; // Resets `.buttons-left`
 }
 
 // Displays on smaller viewports
