@@ -201,22 +201,26 @@ if ( PENDRELL_RESPONSIVE_IMAGES ) {
 // @filter: pendrell_image_lazysizes_count
 function pendrell_image_lazysizes_srcset( $html = '' ) {
   static $counter = 1; // This counter is presumably triggered as often as the one in the next function
-  if ( !empty( $html ) && $counter > apply_filters( 'pendrell_image_lazysizes_count', 1 ) )
+  if ( !empty( $html ) && $counter > apply_filters( 'pendrell_image_lazysizes_counter', 1 ) )
     $html = 'data-' . $html . ' srcset="' . ubik_imagery_blank() . '" ';
   $counter++;
   return $html;
 }
 function pendrell_image_lazysizes_class( $classes = array() ) {
   static $counter = 1;
-  if ( $counter > apply_filters( 'pendrell_image_lazysizes_count', 1 ) )
+  if ( $counter > apply_filters( 'pendrell_image_lazysizes_counter', 1 ) )
     $classes[] = 'lazyload'; // Activates Lazysizes on associated images
   $counter++;
   return $classes;
+}
+function pendrell_image_lazysizes_counter( $count ) {
+  return 3;
 }
 if ( PENDRELL_LAZYSIZES ) {
   add_filter( 'ubik_imagery_img_class', 'pendrell_image_lazysizes_class' ); // Activates Lazysizes; we could also add `data-sizes="auto"` but this seems buggy
   add_filter( 'ubik_imagery_srcset_html', 'pendrell_image_lazysizes_srcset' ); // Swap out the `srcset` attribute where available
   add_filter( 'ubik_imagery_dimensions', '__return_empty_string' ); // Force height/width attribute to conform to this theme's content width
+  //add_filter( 'pendrell_image_lazysizes_counter', 'pendrell_image_lazysizes_counter' ); // Uncomment to change the number of images displayed without Lazysizes
 }
 
 
