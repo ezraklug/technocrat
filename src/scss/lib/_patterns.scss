@@ -61,16 +61,6 @@
   @include rem( width, 18px );
 }
 
-@mixin icon-right {
-  @include rem( margin, 4px -3px 0 4px );
-  float: right;
-}
-
-@mixin icon-left {
-  @include rem( margin, 4px 4px 0 -3px );
-  float: left;
-}
-
 
 
 // == SHADOWS == //

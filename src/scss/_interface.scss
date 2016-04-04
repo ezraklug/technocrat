@@ -25,9 +25,6 @@ input[type="submit"] {
 input[type="reset"] {
   // Nothing special
 }
-.button-action {
-  //@extend %button-capsule-theme-2;
-}
 
 // Containers and groups by functionality
 .buttons {
@@ -158,10 +155,11 @@ label {
   .site-interface & {
     display: none;
     @include k-media-above( break(medium) ) {
+      @include rem( margin-left, spacer(1/2) );
       display: block;
       float: right;
-      max-width: 300px;
-      @include rem( margin-left, spacer(1/2) );
+      max-width: 250px;
+      width: 100%;
     }
   }
   .site-navigation & {

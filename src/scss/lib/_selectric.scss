@@ -26,9 +26,12 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+    .icon-wrap {
+      float: unquote( k-opposite( $align ) );
+      margin-#{$align}: 4px;
+    }
     svg.icon {
       @include icon-size-inline;
-      @include icon-right;
       @include text-shadow-small-svg;
     }
     .s3c-hover & {

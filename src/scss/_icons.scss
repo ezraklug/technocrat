@@ -7,16 +7,11 @@ svg {
     @include rem( width, 24px );
     display: inline-block;
     fill: currentColor; // Inherit color
-    vertical-align: baseline; // Options: baseline, sub, super, text-top, text-bottom, middle, top, bottom
+    vertical-align: text-bottom;
 
     button &,
     .button & {
       @include icon-size-inline;
-      @include icon-right;
-    }
-
-    .button.button-left & {
-      @include icon-left; // Left aligned button icons (for previous page etc.)
     }
 
     .overlay & {
@@ -49,5 +44,18 @@ svg {
   // Fix jQuery bug: http://bugs.jquery.com/ticket/11352
   use {
     pointer-events: none;
+  }
+}
+
+// Specific to icons generated using Ubik SVG Icon
+.icon-text {
+  button &,
+  .button & {
+    @include rem( margin-right, 4px );
+    float: left;
+  }
+  .button.button-left & {
+    @include rem( margin-left, 4px );
+    float: none;
   }
 }
