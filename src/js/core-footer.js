@@ -15,7 +15,7 @@
 
     // Allows for select menus to be styled somewhat sanely
     $('select').selectric({
-      arrowButtonMarkup: svgIcon( 'awe-sort' )
+      arrowButtonMarkup: '<span class="icon-wrap">' + svgIcon( 'awe-sort' ) + '</span>'
     , customClass: { prefix: 's3c' }
     });
   });

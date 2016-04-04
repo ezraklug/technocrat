@@ -151,6 +151,7 @@ if ( PENDRELL_UBIK_FEED ) {
 
 define( 'UBIK_FONTS_GOOGLE', 'Oxygen:300,300italic,400,400italic,700,700italic|Ubuntu:300,400,700' );
 require_once( $path_modules . 'ubik-fonts/ubik-fonts.php' );
+add_filter( 'ubik_fonts_google_protocol', '__return_empty_string' );
 
 
 

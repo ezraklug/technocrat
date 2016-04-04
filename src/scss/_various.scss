@@ -20,7 +20,7 @@
 // Footnotes; for use with Markdown Extra implementations e.g. JP Markdown
 .footnotes {
   @extend %links-reset-border;
-  @extend %text-smaller;
+  @include font-style(entry-footnotes);
   li {
     outline: none; // Remove blue border when clicking on footnotes
     &:before {
@@ -31,7 +31,7 @@
 
 // References list; for use with scholarly works
 .references {
-  @extend %text-smaller;
+  @include font-style(entry-references);
   ol,
   ul {
     li:before {

@@ -50,10 +50,7 @@ function pendrell_icon( $name = '', $text = '', $desc = '', $class = array() ) {
 
 // Returns an SVG icon and some text
 function pendrell_icon_text( $name = '', $text = '', $desc = '', $class = array() ) {
-  $icon = pendrell_icons( $name );
-  if ( empty( $icon ) )
-    return;
-  return ubik_svg_icon_text( $icon, $text, $desc, $class );
+  return ubik_svg_icon_text( pendrell_icons( $name ), $text, $desc, $class );
 }
 
 

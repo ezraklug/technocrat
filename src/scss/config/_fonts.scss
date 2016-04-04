@@ -82,6 +82,7 @@ $_fonts: (
   // Masthead
   @if (site-title == $style) {
     @extend %head-light-observer;
+    @include font-size(site-title-small);
     text-transform: lowercase;
     white-space: nowrap;
     @include k-media-above( break(medium) ) {
@@ -147,6 +148,18 @@ $_fonts: (
     @include font-size(text-smaller);
     @include scut-reverse-italics;
     color: colour(text-lightest);
+    @include k-media-above( break(medium) ) {
+      @include font-size(text-small);
+    }
+  }
+  @if (entry-footnotes == $style) {
+    @extend %text-smaller;
+    @include k-media-above( break(medium) ) {
+      @include font-size(text-small);
+    }
+  }
+  @if (entry-references == $style) {
+    @extend %text-smaller;
     @include k-media-above( break(medium) ) {
       @include font-size(text-small);
     }
@@ -224,12 +237,22 @@ $_fonts: (
 
   // Image overlays
   @if (image-overlay-title == $style) {
-    @include font-size( text, 0, 25 ); // Breaks the visual rhythm on purpose
+    @include font-size( text, 0, 15 ); // Breaks the visual rhythm on purpose
     color: white();
     text-align: center;
-    @include k-media-above( break(medium) ) {
+    @include k-media-above( break(large) ) {
       @include font-size(text-bigger);
       @include text-shadow-bigger;
+    }
+    .gallery-static & {
+      @include k-media-below( break(small) ) {
+        @include font-size( text-smaller, 0, 15 );
+      }
+    }
+    .gallery-static.gallery-columns-4 & {
+      @include k-media-below( break(medium) ) {
+        @include font-size( text-smaller, 0, 15 );
+      }
     }
   }
   @if (image-overlay-caption == $style) {
@@ -260,7 +283,7 @@ $_fonts: (
 // Font stack mixin for use with Font Face Observer (to improve web font performance)
 @mixin font-observer($stack: body) {
   font-family: font(#{$stack}-system);
-  .wf-#{$stack}-active & {
+  .wf-active-#{$stack} & {
     font-family: font(#{$stack}-web);
   }
 }

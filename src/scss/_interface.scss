@@ -28,9 +28,6 @@ input[type="submit"] {
 input[type="reset"] {
   // Nothing special
 }
-.button-action {
-  //@extend %button-capsule-theme-2;
-}
 
 // Containers and groups by functionality
 .buttons {
@@ -38,6 +35,12 @@ input[type="reset"] {
 }
 .buttons-merge {
   //@include button-merge; // Unused in this theme
+}
+.buttons-left {
+  @include button-group(left);
+}
+.buttons-merge-left {
+  @include button-merge(left);
 }
 
 
@@ -133,8 +136,8 @@ label {
 
 // == RESPONSIVE MENU == //
 
-// Responsive menu toggle
-.menu-toggle { // Menu toggle for mobile phones and small screens
+// Responsive menu toggle for mobile phones and small screens
+.menu-toggle {
   @include k-media-above( break(medium) ) {
     display: none;
   }
@@ -155,6 +158,25 @@ label {
   .site-interface &,
   .widget & {
     width: 100%; // Search form in the navigation and sidebar stretches to fill
+/*=======
+  width: 60%;
+  .site-interface & {
+    display: none;
+    @include k-media-above( break(medium) ) {
+      @include rem( margin-left, spacer(1/2) );
+      display: block;
+      float: right;
+      max-width: 250px;
+      width: 100%;
+    }
+  }
+  .site-navigation & {
+    @include rem( margin-bottom, spacer(1/2) );
+    width: 100%;
+    @include k-media-above( break(medium) ) {
+      display: none;
+    }
+>>>>>>> 1407e92aa5a424e8a3a87fa705fad6784089376b*/
   }
 }
 .search-field-wrap {
@@ -188,19 +210,21 @@ select {
 
 // == SKIP LINKS == //
 
-// Hidden until focused; for accessibility purposes
+// Hidden until focused; for accessibility purposes; @TODO: needs some work, low-priority
 .skip-link {
   opacity: 0;
   position: fixed;
   right: 99999%;
   &:focus {
     background: colour(button-alt);
-    float: right;
     opacity: 1;
     outline-width: 1px;
     position: static;
     transition: opacity .3s;
   }
+}
+.buttons-skip-link {
+  margin: 0;
 }
 
 // Displays on smaller viewports

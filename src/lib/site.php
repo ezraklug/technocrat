@@ -9,29 +9,29 @@ function pendrell_header_buttons() {
   if ( !empty( $buttons ) )
     echo '<div class="buttons buttons-merge buttons-header">' . $buttons . '</div>';
 }
-add_action( 'pendrell_header_interface', 'pendrell_header_buttons', 10 );
+add_action( 'pendrell_header_interface', 'pendrell_header_buttons', 20 );
 
-// Skip to content link
+// Skip to content link; this should appear first in the HTML and is floated to the left to accommodate
 function pendrell_header_skip_to_content( $buttons ) {
   echo '<div class="buttons buttons-skip-link"><a href="#content" class="button skip-link" role="button" rel="nofollow">' . __( 'Skip to content', 'pendrell' ) . '</a></div>';
 }
-add_action( 'pendrell_header_interface', 'pendrell_header_skip_to_content', 15 ); // Because all these elements are floated right a higher number is displayed first
+add_action( 'pendrell_header_interface', 'pendrell_header_skip_to_content', 5 );
 
 // Responsive menu toggle
 function pendrell_header_responsive_menu() {
   echo '<div class="buttons buttons-menu-toggle"><button id="menu-toggle" class="menu-toggle">' . pendrell_icon_text( 'menu-toggle', __( 'Menu', 'pendrell' ) ) . '</button></div>';
 }
-add_action( 'pendrell_header_interface', 'pendrell_header_responsive_menu', 5 );
+add_action( 'pendrell_header_interface', 'pendrell_header_responsive_menu', 10 );
 
-
-
-// == HEADER MENU == //
-
-// Responsive search bar; hidden except on small screens
+// Responsive search bar; hidden except on small screens; @TODO: reduce this to only one search form?
 function pendrell_header_search() {
   get_search_form();
 }
 add_action( 'pendrell_header_interface', 'pendrell_header_search', 25 );
+
+
+
+// == HEADER MENU == //
 
 // Responsive menu wrapped in a container to handle the fact that `wp_nav_menu` defaults back to `wp_page_menu` when no menu is specified
 function pendrell_header_menu() {
