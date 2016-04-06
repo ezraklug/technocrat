@@ -102,38 +102,46 @@
 .site-header {
   @include rem( padding-top, spacer() );
   @include scut-center-block( $width-content );
-  position: relative; // For use with the skip link and menu toggle
-}
-.site-branding {
-  @include rem( padding-bottom, spacer(1/2) );
-  &:hover .site-description { // Show site description on hover
-    opacity: 1;
-    transition: opacity .6s ease;
-    transition-delay: .43s;
-  }
 }
 .site-title {
-  @extend %clearfix-below;
   @include font-style(site-title);
 }
 .site-description {
   @extend %clearfix-below;
   @extend %hide-below-medium; // Hide the site description on smaller screens
   @include font-style(site-description);
+  @include k-absolute( top spacer(2) );
   opacity: 0;
   transition: opacity .8s ease-out;
+  .site-branding:hover & { // Show site description on hover
+    opacity: 1;
+    transition: opacity .6s ease;
+    transition-delay: .43s;
+  }
+}
+.site-branding {
+  @include rem( padding-bottom, spacer() );
+  float: left;
+  width: 25%;
+  @include k-media-above( break(medium) ) {
+    @include rem( padding-bottom, spacer(3/2) );
+    width: 35%;
+  }
 }
 .site-interface { // Site interface: the toolbar/menu at top right
-  @include k-absolute( right 0 top spacer() );
-  display: block;
+  display: flex;
+  justify-content: flex-end;
+  float: right;
+  width: 75%;
+  @include k-media-above ( break(medium) ) {
+    width: 65%;
+  }
 }
 .site-navigation {
   @extend %max-width-100; // Prevents hidden search box from overflowing container
+  display: none;
   @include k-media-above( break(medium) ) {
     display: block !important; // Prevents the responsive menu display state from hiding the menu on larger screens after a resize
-  }
-  @include k-media-below( break(medium) ) {
-    display: none;
   }
 }
 

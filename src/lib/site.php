@@ -1,6 +1,6 @@
 <?php // ==== SITE ==== //
 
-// == HEADER INTERFACE == //
+// == HEADER == //
 
 // Header buttons; add buttons using filter hooks just like with entry content
 // @filter: pendrell_header_buttons
@@ -9,7 +9,7 @@ function pendrell_header_buttons() {
   if ( !empty( $buttons ) )
     echo '<div class="buttons buttons-merge buttons-header">' . $buttons . '</div>';
 }
-add_action( 'pendrell_header_interface', 'pendrell_header_buttons', 20 );
+add_action( 'pendrell_header_interface', 'pendrell_header_buttons', 10 );
 
 // Skip to content link; this should appear first in the HTML and is floated to the left to accommodate
 function pendrell_header_skip_to_content( $buttons ) {
@@ -21,7 +21,7 @@ add_action( 'pendrell_header_interface', 'pendrell_header_skip_to_content', 5 );
 function pendrell_header_responsive_menu() {
   echo '<div class="buttons buttons-menu-toggle"><button id="menu-toggle" class="menu-toggle">' . pendrell_icon_text( 'menu-toggle', __( 'Menu', 'pendrell' ) ) . '</button></div>';
 }
-add_action( 'pendrell_header_interface', 'pendrell_header_responsive_menu', 10 );
+add_action( 'pendrell_header_interface', 'pendrell_header_responsive_menu', 99 );
 
 // Responsive search bar; hidden except on small screens; @TODO: reduce this to only one search form?
 function pendrell_header_search() {
@@ -29,10 +29,6 @@ function pendrell_header_search() {
 }
 add_action( 'pendrell_header_interface', 'pendrell_header_search', 15 );
 add_action( 'pendrell_header_navigation', 'pendrell_header_search', 15 );
-
-
-
-// == HEADER MENU == //
 
 // Responsive menu wrapped in a container to handle the fact that `wp_nav_menu` defaults back to `wp_page_menu` when no menu is specified
 function pendrell_header_menu() {
@@ -42,7 +38,7 @@ add_action( 'pendrell_header_navigation', 'pendrell_header_menu', 20 );
 
 
 
-// == FOOTER MENU == //
+// == FOOTER == //
 
 // Generic footer menu
 function pendrell_footer_menu() {
@@ -55,3 +51,11 @@ function pendrell_footer_skip_to_top() {
   echo '<div class="buttons buttons-skip-top"><a href="#page" class="button skip-top" rel="nofollow" role="button">' . pendrell_icon_text( 'top-link', __( 'Top', 'pendrell' ) ) . '</a></div>';
 }
 add_action( 'pendrell_footer_navigation', 'pendrell_footer_skip_to_top', 20 );
+
+// For small bits and pieces of conditional inline JavaScript
+function pendrell_footer_scripts_inline() {
+  $scripts = apply_filters( 'pendrell_footer_scripts_inline', '' );
+  if ( !empty( $scripts ) )
+    echo '<script>(function($){$(function(){' . $scripts . '});}(jQuery));</script>';
+}
+add_action( 'wp_print_footer_scripts', 'pendrell_footer_scripts_inline', 99 );

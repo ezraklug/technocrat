@@ -144,7 +144,7 @@ module.exports = {
   , chunks: {
       header: [
         modules+'svg4everybody/dist/svg4everybody.js'
-      , src+'js/core-header.js'
+      , src+'js/header.js'
       ]
     , footer: [
         modules+'html5-history-api/history.js'
@@ -158,7 +158,7 @@ module.exports = {
       , src+'js/fontfaceobserver.js'
       , src+'js/responsive-menu.js'
       , src+'js/skip-link-focus-fix.js'
-      , src+'js/core-footer.js'
+      , src+'js/footer.js'
       ]
     , contact: [
         modules+'jquery-validation/dist/jquery.validate.js'
