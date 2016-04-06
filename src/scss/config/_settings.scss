@@ -65,7 +65,7 @@ $_modules: (
 
 @if $dev {
   $_modules: (
-    gallery-shortcode:  true // WordPress core; activation creates some useless duplicate styles
+    gallery-shortcode:  false // WordPress core; activation creates some useless duplicate styles
   , lazysizes:          true
   , magnific-popup:     true
   , post-formats:       true
