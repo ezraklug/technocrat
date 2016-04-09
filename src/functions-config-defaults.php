@@ -26,6 +26,9 @@ defined( 'PENDRELL_JQUERY_FOOTER' )       || define( 'PENDRELL_JQUERY_FOOTER', f
 // Lazysizes switch
 defined( 'PENDRELL_LAZYSIZES' )           || define( 'PENDRELL_LAZYSIZES', false );
 
+// Lazysizes counter: number of images to display *before* applying lazy load code; set to 0 to disable
+defined( 'PENDRELL_LAZYSIZES_COUNTER' )   || define( 'PENDRELL_LAZYSIZES_COUNTER', 3 );
+
 // Master switch for post formats
 defined( 'PENDRELL_MAGNIFIC' )            || define( 'PENDRELL_MAGNIFIC', false );
 

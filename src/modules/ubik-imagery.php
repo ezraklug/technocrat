@@ -197,30 +197,30 @@ if ( PENDRELL_RESPONSIVE_IMAGES ) {
 // WordPress will not provision `srcset` unless there are 2 or more sources; as such, smaller images won't have a `srcset` attribute
 // This means we only want to swap the `srcset` attribute for a blank if there's already something there
 // A blank `srcset` and filled `data-srcset` allows Lazysizes to lazy load responsive images
-// Note: you can filter the "count" where lazyloading will begin; this allows you to load images "above the fold" like normal, skipping any JS trickery
-// @filter: pendrell_image_lazysizes_count
+// The configurable counter defines when lazy loading will begin; this allows you to load images "above the fold" like normal, skipping any JS trickery
+// Additionally, shortcodes are processed when generating the meta description in this theme, necessitating a hack to remove them
 function pendrell_image_lazysizes_srcset( $html = '' ) {
   static $counter = 1; // This counter is presumably triggered as often as the one in the next function
-  if ( !empty( $html ) && $counter > apply_filters( 'pendrell_image_lazysizes_counter', 1 ) )
+  if ( !empty( $html ) && $counter > PENDRELL_LAZYSIZES_COUNTER )
     $html = 'data-' . $html . ' srcset="' . ubik_imagery_blank() . '" ';
   $counter++;
   return $html;
 }
 function pendrell_image_lazysizes_class( $classes = array() ) {
   static $counter = 1;
-  if ( $counter > apply_filters( 'pendrell_image_lazysizes_counter', 1 ) )
+  if ( $counter > PENDRELL_LAZYSIZES_COUNTER )
     $classes[] = 'lazyload'; // Activates Lazysizes on associated images
   $counter++;
   return $classes;
 }
-function pendrell_image_lazysizes_counter( $count ) {
-  return 3;
+function pendrell_image_lazysizes_meta_desc( $content ) {
+  return ubik_text_strip_shortcode( array( 'group', 'image' ), $content );
 }
 if ( PENDRELL_LAZYSIZES ) {
   add_filter( 'ubik_imagery_img_class', 'pendrell_image_lazysizes_class' ); // Activates Lazysizes; we could also add `data-sizes="auto"` but this seems buggy
   add_filter( 'ubik_imagery_srcset_html', 'pendrell_image_lazysizes_srcset' ); // Swap out the `srcset` attribute where available
   add_filter( 'ubik_imagery_dimensions', '__return_empty_string' ); // Force height/width attribute to conform to this theme's content width
-  //add_filter( 'pendrell_image_lazysizes_counter', 'pendrell_image_lazysizes_counter' ); // Uncomment to change the number of images displayed without Lazysizes
+  add_filter( 'ubik_seo_meta_description_sanitize_before', 'pendrell_image_lazysizes_meta_desc' ); // Disable Ubik Imagery shortcodes in meta descriptions (so the counter is accurate)
 }
 
 
