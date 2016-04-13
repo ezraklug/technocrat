@@ -2,8 +2,6 @@
 
 require_once( trailingslashit( get_stylesheet_directory() ) . 'modules/ubik-photo-meta/ubik-photo-meta.php' );
 
-
-
 // A simple wrapper for the photo meta function
 function pendrell_photo_meta() {
 
@@ -36,3 +34,6 @@ function pendrell_photo_meta_license_terms( $terms ) {
 
 // Uncomment to activate licensing module
 //add_filter( 'ubik_photo_meta_data', 'ubik_photo_meta_license_formatted', 999 );
+
+// WordPress 4.5+ strips additional image metadata; uncomment this line to preserve it
+//add_filter( 'image_strip_meta', '__return_false' );
