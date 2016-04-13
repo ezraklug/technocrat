@@ -5,6 +5,7 @@
 // Development mode
 if ( WP_LOCAL_DEV === true ) {
   define( 'PENDRELL_AJAX_PAGE_LOADER', true );
+  //define( 'PENDRELL_COLUMNS', 2 );
   define( 'PENDRELL_JQUERY_FOOTER', true );
   define( 'PENDRELL_LAZYSIZES', true );
   define( 'PENDRELL_LAZYSIZES_COUNTER', 3 );
