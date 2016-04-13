@@ -51,11 +51,3 @@ function pendrell_footer_skip_to_top() {
   echo '<div class="buttons buttons-skip-top"><a href="#page" class="button skip-top" rel="nofollow" role="button">' . pendrell_icon_text( 'top-link', __( 'Top', 'pendrell' ) ) . '</a></div>';
 }
 add_action( 'pendrell_footer_navigation', 'pendrell_footer_skip_to_top', 20 );
-
-// For small bits and pieces of conditional inline JavaScript
-function pendrell_footer_scripts_inline() {
-  $scripts = apply_filters( 'pendrell_footer_scripts_inline', '' );
-  if ( !empty( $scripts ) )
-    echo '<script>(function($){$(function(){' . $scripts . '});}(jQuery));</script>';
-}
-add_action( 'wp_print_footer_scripts', 'pendrell_footer_scripts_inline', 99 );
