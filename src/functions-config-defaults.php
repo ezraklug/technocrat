@@ -1,16 +1,5 @@
 <?php // ==== CONFIGURATION (DEFAULT) ==== //
 
-// Development mode
-if ( WP_LOCAL_DEV === true ) {
-  define( 'PENDRELL_AJAX_PAGE_LOADER', true );
-  define( 'PENDRELL_JQUERY_FOOTER', true );
-  define( 'PENDRELL_LAZYSIZES', true );
-  define( 'PENDRELL_MAGNIFIC', true );
-  define( 'PENDRELL_POST_FORMATS', true );
-  define( 'PENDRELL_RESPONSIVE_IMAGES', true );
-  define( 'PENDRELL_SYNTAX_HIGHLIGHT', true );
-}
-
 // Master switch for WP AJAX Page Load script
 defined( 'PENDRELL_AJAX_PAGE_LOADER' )    || define( 'PENDRELL_AJAX_PAGE_LOADER', false );
 
@@ -27,7 +16,7 @@ defined( 'PENDRELL_JQUERY_FOOTER' )       || define( 'PENDRELL_JQUERY_FOOTER', f
 defined( 'PENDRELL_LAZYSIZES' )           || define( 'PENDRELL_LAZYSIZES', false );
 
 // Lazysizes counter: number of images to display *before* applying lazy load code; set to 0 to disable
-defined( 'PENDRELL_LAZYSIZES_COUNTER' )   || define( 'PENDRELL_LAZYSIZES_COUNTER', 3 );
+defined( 'PENDRELL_LAZYSIZES_COUNTER' )   || define( 'PENDRELL_LAZYSIZES_COUNTER', 1 );
 
 // Master switch for post formats
 defined( 'PENDRELL_MAGNIFIC' )            || define( 'PENDRELL_MAGNIFIC', false );
