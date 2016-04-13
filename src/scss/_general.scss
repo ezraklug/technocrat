@@ -275,17 +275,13 @@ video {
 
 // == FORMS == //
 
-// Textarea is not reset in the Eric Meyer reset; let's do that here
-textarea {
-  font-size: 100%;
-  margin: 0;
-}
-
 // Text input
 input,
 textarea {
   box-sizing: border-box; // To account for padding and such
-  font-family: inherit; // Possibly redundant
+}
+textarea {
+  font-size: 100%;
 }
 input[type="email"],
 input[type="password"],
