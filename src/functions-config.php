@@ -13,4 +13,19 @@ if ( WP_LOCAL_DEV === true ) {
   define( 'PENDRELL_POST_FORMATS', true );
   define( 'PENDRELL_RESPONSIVE_IMAGES', true );
   define( 'PENDRELL_SYNTAX_HIGHLIGHT', true );
+
+  // Switch on most Ubik components for debugging
+  define( 'PENDRELL_UBIK_ADMIN', true );
+  define( 'PENDRELL_UBIK_ANALYTICS', true );
+  define( 'PENDRELL_UBIK_EXCLUDER', true );
+  define( 'PENDRELL_UBIK_FEED', true );
+  define( 'PENDRELL_UBIK_LINGUAL', true );
+  define( 'PENDRELL_UBIK_MARKDOWN', true );
+  define( 'PENDRELL_UBIK_PHOTO_META', true );
+  define( 'PENDRELL_UBIK_PLACES', true );
+  define( 'PENDRELL_UBIK_QUICK_TERMS', true );
+  define( 'PENDRELL_UBIK_RECORDPRESS', true );
+  define( 'PENDRELL_UBIK_RELATED', true );
+  define( 'PENDRELL_UBIK_SEO', true );
+  define( 'PENDRELL_UBIK_SERIES', true );
 }
