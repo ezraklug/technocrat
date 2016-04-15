@@ -34,7 +34,7 @@ function pendrell_author_info( $avatar = true ) {
 
   // Initialize
   $output = $avatar_html = '';
-  $author = '<span class="p-name p-author">' . get_the_author() . '</span>';
+  $author = '<span class="p-name p-author fn">' . get_the_author() . '</span>';
 
   // Author description
   $output .= get_the_author_meta( 'description' );
