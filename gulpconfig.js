@@ -321,6 +321,6 @@ module.exports = {
     , theme:        src+'**/*.php'
     , livereload:   build+'**/*'
     }
-  , watcher: 'livereload' // Who watches the watcher? Easily switch between BrowserSync ('browsersync') and Livereload ('livereload')
+  , watcher: 'browsersync' // Who watches the watcher? Easily switch between BrowserSync ('browsersync') and Livereload ('livereload')
   }
 }

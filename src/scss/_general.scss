@@ -86,10 +86,6 @@ address {
     font-weight: font(body-bold);
   }
 }
-b,
-strong {
-  //font-weight: font(body-bold); // Potentially superfluous; normalize.css sets both to font-weight: bold; // Normalize 4.0.0 testing
-}
 cite,
 em,
 i {
@@ -327,7 +323,6 @@ fieldset {
 }
 
 // Remove default Firefox styling of invalid form input; via: https://developer.mozilla.org/en-US/docs/Web/CSS/:invalid
-//:invalid
 :-moz-submit-invalid,
 :-moz-ui-invalid {
   @extend %box-shadow-reset;
