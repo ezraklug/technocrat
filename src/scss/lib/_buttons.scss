@@ -2,10 +2,9 @@
 
 // == LIBRARY == //
 
-// These mixins might one day become a separate library
-
 // General button styling; applies to all buttons
 @mixin button-common {
+  @include scut-truncate;
   box-sizing: border-box;
   cursor: pointer;
   display: inline-block;

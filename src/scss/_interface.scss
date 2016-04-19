@@ -4,26 +4,13 @@
 
 // == BUTTONS == //
 
-%button {
-  @include button-capsule;
-}
-%button-1 {
-  @include button-capsule-flat;
-}
 button,
 .button,
-input[type="button"], // @TODO: eliminate `input`, introduce `button` elements instead
+input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-  @extend %button;
-  @extend %button-1;
-}
-button[type="submit"],
-input[type="submit"] {
-  // Nothing special
-}
-input[type="reset"] {
-  // Nothing special
+  @include button-capsule;
+  @include button-capsule-flat;
 }
 
 // Containers and groups by functionality
