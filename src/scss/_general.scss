@@ -73,7 +73,7 @@ a {
 
 // Reset-like things with variables or WordPress-specific styling
 abbr {
-  //border-bottom: 1px dotted rgba( colour(text), .4 ); // Normalize 4.0.0 testing
+  border-bottom: 1px dotted rgba( colour(text), .4 );
   line-height: 0;
   &:hover {
     cursor: help;
