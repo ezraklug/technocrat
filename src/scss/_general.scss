@@ -142,11 +142,13 @@ blockquote {
     &:last-child {
       margin: 0;
     }
-    &:first-child:before { // Add opening and closing quotation marks to the blockquote element
-      content: "\201C";
-    }
-    &:nth-last-of-type(1):after { // Correctly adds quotation mark when footer or cite elements are present at the end of the blockquote
-      content: "\201D";
+    @if module(quotes) {
+      &:first-child:before { // Add opening and closing quotation marks to the blockquote element
+        content: "\201C";
+      }
+      &:nth-last-of-type(1):after { // Correctly adds quotation mark when footer or cite elements are present at the end of the blockquote
+        content: "\201D";
+      }
     }
   }
   footer { // The footer element of a blockquote adds information about the source of the quotation
@@ -161,14 +163,19 @@ blockquote {
       content: "\2014\00a0"; // Citation dash
     }
   }
+  &.normal {
+    font-style: normal !important; // Force normal style for use with Chinese text
+  }
 }
 q {
   quotes: none;
-  &:before {
-    content: "\201C";
-  }
-  &:after {
-    content: "\201D";
+  @if module(quotes) {
+    &:before {
+      content: "\201C";
+    }
+    &:after {
+      content: "\201D";
+    }
   }
 }
 
