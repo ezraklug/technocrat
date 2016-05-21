@@ -275,13 +275,11 @@ module.exports = {
       , 'feed'
       , 'fonts' // *
       , 'imagery' // *
-      , 'lingual'
       , 'markdown'
       , 'meta' // *
       , 'places'
       , 'photo-meta'
       , 'post-formats'
-      , 'quick-terms'
       , 'recordpress'
       , 'related'
       , 'search' // *

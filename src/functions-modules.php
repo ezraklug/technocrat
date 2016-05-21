@@ -5,11 +5,9 @@ defined( 'PENDRELL_UBIK_ADMIN' )          || define( 'PENDRELL_UBIK_ADMIN', fals
 defined( 'PENDRELL_UBIK_ANALYTICS' )      || define( 'PENDRELL_UBIK_ANALYTICS', false );
 defined( 'PENDRELL_UBIK_EXCLUDER' )       || define( 'PENDRELL_UBIK_EXCLUDER', false );
 defined( 'PENDRELL_UBIK_FEED' )           || define( 'PENDRELL_UBIK_FEED', false );
-defined( 'PENDRELL_UBIK_LINGUAL' )        || define( 'PENDRELL_UBIK_LINGUAL', false );
 defined( 'PENDRELL_UBIK_MARKDOWN' )       || define( 'PENDRELL_UBIK_MARKDOWN', false );
 defined( 'PENDRELL_UBIK_PHOTO_META' )     || define( 'PENDRELL_UBIK_PHOTO_META', false );
 defined( 'PENDRELL_UBIK_PLACES' )         || define( 'PENDRELL_UBIK_PLACES', false );
-defined( 'PENDRELL_UBIK_QUICK_TERMS' )    || define( 'PENDRELL_UBIK_QUICK_TERMS', false );
 defined( 'PENDRELL_UBIK_RECORDPRESS' )    || define( 'PENDRELL_UBIK_RECORDPRESS', false );
 defined( 'PENDRELL_UBIK_RELATED' )        || define( 'PENDRELL_UBIK_RELATED', false );
 defined( 'PENDRELL_UBIK_SEO' )            || define( 'PENDRELL_UBIK_SEO', false );
@@ -29,11 +27,9 @@ $path_modules = trailingslashit( get_stylesheet_directory() ) . 'modules/';
 
 // == ADMIN == //
 
-if ( is_admin() ) {
-  if ( PENDRELL_UBIK_ADMIN )
-    require_once( $path_modules . 'ubik-admin/ubik-admin.php' );
-  if ( PENDRELL_UBIK_QUICK_TERMS )
-    require_once( $path_modules . 'ubik-quick-terms/ubik-quick-terms.php' );
+if ( PENDRELL_UBIK_ADMIN && is_admin() ) {
+  //define( 'UBIK_ADMIN_SANITIZE_SLUG', true ); // Remove non-Latin characters from slugs; for use with bilingual blogs
+  require_once( $path_modules . 'ubik-admin/ubik-admin.php' );
 }
 
 
@@ -114,19 +110,6 @@ add_filter( 'ubik_fonts_google_protocol', '__return_empty_string' );
 // == IMAGERY * == //
 
 require_once( $path_modules . 'ubik-imagery.php' );
-
-
-
-// == LINGUAL == //
-
-if ( PENDRELL_UBIK_LINGUAL ) {
-  define( 'UBIK_LINGUAL_SANITIZE_SLUG', true );
-  require_once( $path_modules . 'ubik-lingual/ubik-lingual.php' );
-  add_filter( 'the_title', 'ubik_lingual_pinyin_strip_marks' ); // Content titles
-  add_filter( 'ubik_title', 'ubik_lingual_pinyin_strip_marks' ); // Page titles
-  if ( PENDRELL_UBIK_PLACES )
-    add_filter( 'ubik_places_title', 'ubik_lingual_pinyin_strip_marks' ); // Small header in the faux widget
-}
 
 
 
@@ -267,6 +250,10 @@ require_once( $path_modules . 'ubik-text/ubik-text.php' );
 add_filter( 'the_content_feed', 'ubik_text_strip_asides' );
 add_filter( 'the_excerpt_rss', 'ubik_text_strip_asides' );
 add_filter( 'the_content', 'ubik_text_strip_more_orphan', 99 ); // Strip paragraph tags from orphaned more tags
+//add_filter( 'the_title', 'ubik_text_pinyin_strip_marks' ); // Content titles
+//add_filter( 'ubik_title', 'ubik_text_pinyin_strip_marks' ); // Page titles
+//if ( PENDRELL_UBIK_PLACES )
+  //add_filter( 'ubik_places_title', 'ubik_text_pinyin_strip_marks' ); // Small header in the faux widget
 
 
 
