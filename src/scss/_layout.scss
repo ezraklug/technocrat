@@ -170,7 +170,11 @@ main {
   @extend %clearfix-above;
   @extend %links;
   @extend %spacer-below-double;
+  @include font-size(text-big);
   @include font-style(main-desc);
+  @include k-media-above( break(medium) ) {
+    @include font-size(text-bigger);
+  }
   p {
     @extend %spacer-below;
   }
