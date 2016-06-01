@@ -1,11 +1,9 @@
 <?php // ==== ASSETS ==== //
 
-// These functions handle asset loading: scripts, styles, and fonts
-
 // == SCRIPTS & STYLES == //
 
 // Enqueue front-end scripts and styles; additional ideas to consider: https://github.com/roots/roots/blob/master/lib/scripts.php
-function pendrell_scripts_enqueue() {
+function pendrell_assets_enqueue() {
 
   // Initialize
   $scripts = array(
@@ -122,8 +120,12 @@ function pendrell_scripts_enqueue() {
   wp_register_style( 'pendrell-style', get_stylesheet_uri(), $dependencies = array(), filemtime( get_template_directory() . '/style.css' ) );
   wp_enqueue_style( 'pendrell-style' );
 
+  // Register and enqueue print stylesheet with versioning based on last modified time
+  wp_register_style( 'pendrell-style-print', get_template_directory_uri() . '/style-print.css', $dependencies = array(), filemtime( get_template_directory() . '/style-print.css' ), 'print' );
+  wp_enqueue_style( 'pendrell-style-print' );
+
 } // pendrell_enqueue_scripts()
-add_action( 'wp_enqueue_scripts', 'pendrell_scripts_enqueue' );
+add_action( 'wp_enqueue_scripts', 'pendrell_assets_enqueue' );
 
 
 

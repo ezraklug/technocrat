@@ -5,7 +5,7 @@
   // Test the session storage from the presence of the `wf-active` key; lost when opening new tabs
   if (!sessionStorage.getItem('wf-active')) {
 
-    // These definitions should match those in `src/founctions-modules.php` and `src/scss/config/_fonts.scss`
+    // These definitions should match those in `src/functions-modules.php` and `src/scss/config/_fonts.scss`
     var fontFamilies = {
       'Catamaran': [
         { weight: 300 },
@@ -13,8 +13,11 @@
       ],
       'Oxygen': [
         { weight: 300 },
+        { weight: 300, style: 'italic' },
         { weight: 400 },
-        { weight: 700 }
+        { weight: 400, style: 'italic' },
+        { weight: 600 },
+        { weight: 600, style: 'italic' }
       ]
     }, fontObservers = [];
 
@@ -30,7 +33,7 @@
       document.documentElement.classList.add('wf-active');
       sessionStorage.setItem('wf-active', 'true');
     }, function() {
-      // Something went wrong
+      // Something went wrong; no need to do anything since we've already got fallback fonts in place
     });
   }
 })();
