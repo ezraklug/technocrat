@@ -51,10 +51,10 @@ $_modules: (
   gallery-shortcode:  false // WordPress core; activation creates some useless duplicate styles; disable if you don't use [gallery]
 , lazysizes:          false
 , magnific-popup:     false
+, one-column:         true
 , post-formats:       false
 , prism:              false
 , quotes:             true
-, one-column:         true
 , ubik-links:         false
 , ubik-photo-meta:    false
 , ubik-places:        false
@@ -69,10 +69,10 @@ $_modules: (
     gallery-shortcode:  false // WordPress core; activation creates some useless duplicate styles
   , lazysizes:          true
   , magnific-popup:     true
+  , one-column:         true
   , post-formats:       true
   , prism:              true
   , quotes:             true
-  , one-column:         true
   , ubik-links:         true
   , ubik-photo-meta:    true
   , ubik-places:        true
