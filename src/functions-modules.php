@@ -101,7 +101,8 @@ if ( PENDRELL_UBIK_FEED ) {
 
 // == FONTS == * //
 
-define( 'UBIK_FONTS_GOOGLE', 'Catamaran:300,500|Oxygen:300,300italic,400,400italic,600,600italic' );
+define( 'UBIK_FONTS_GOOGLE', 'Catamaran:300,500|Oxygen:300,300italic,400,400italic,600,600italic&subset=latin' );
+define( 'UBIK_FONTS_GOOGLE_INLINE', true );
 require_once( $path_modules . 'ubik-fonts/ubik-fonts.php' );
 
 

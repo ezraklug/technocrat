@@ -286,6 +286,6 @@ $_fonts: (
 @mixin font-observer($stack: body) {
   font-family: font(#{$stack}-system);
   .wf-active & {
-    font-family: font(#{$stack}-web);
+    font-family: font(#{$stack}-full);
   }
 }
