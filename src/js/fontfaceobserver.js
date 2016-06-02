@@ -4,7 +4,7 @@
 
   // Test the session storage from the presence of the `wf-active` key; lost when opening new tabs
   //if (!sessionStorage.getItem('wf-active')) {
-  if (document.cookie.indexOf("wf-active") == -1) {
+  if (document.cookie.indexOf("wf-active") === -1) {
 
     // These definitions should match those in `src/functions-modules.php` and `src/scss/config/_fonts.scss`
     var fontFamilies = {
