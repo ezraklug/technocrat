@@ -250,10 +250,6 @@ require_once( $path_modules . 'ubik-text/ubik-text.php' );
 add_filter( 'the_content_feed', 'ubik_text_strip_asides' );
 add_filter( 'the_excerpt_rss', 'ubik_text_strip_asides' );
 add_filter( 'the_content', 'ubik_text_strip_more_orphan', 99 ); // Strip paragraph tags from orphaned more tags
-//add_filter( 'the_title', 'ubik_text_pinyin_strip_marks' ); // Content titles
-//add_filter( 'ubik_title', 'ubik_text_pinyin_strip_marks' ); // Page titles
-//if ( PENDRELL_UBIK_PLACES )
-  //add_filter( 'ubik_places_title', 'ubik_text_pinyin_strip_marks' ); // Small header in the faux widget
 
 
 

@@ -163,9 +163,6 @@ blockquote {
       content: "\2014\00a0"; // Citation dash
     }
   }
-  &.normal {
-    font-style: normal !important; // Force normal style for use with Chinese text
-  }
 }
 q {
   quotes: none;
