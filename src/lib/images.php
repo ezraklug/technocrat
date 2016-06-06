@@ -86,10 +86,11 @@ add_filter( 'prepend_attachment', 'pendrell_image_prepend' );
 
 
 // Better quality images
-function pendrell_image_jpeg_quality() {
-  return 95;
+function pendrell_image_jpeg_quality( $quality ) {
+  return PENDRELL_JPEG_QUALITY;
 }
 add_filter( 'jpeg_quality', 'pendrell_image_jpeg_quality' );
+add_filter( 'wp_editor_set_quality', 'pendrell_image_jpeg_quality' );
 
 
 

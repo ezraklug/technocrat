@@ -90,3 +90,12 @@
 .sticky {
   @extend %spacer-reset;
 }
+
+// CJK characters should not be bold or italicized under any circumstances
+[lang^="cjk"],
+[lang^="zh"] {
+  text-decoration: none;
+  font-style: normal !important;
+  font-weight: 300 !important; // Lighter CJW text is easier to read
+  text-align: justify;
+}

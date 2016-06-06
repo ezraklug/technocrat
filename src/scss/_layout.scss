@@ -75,6 +75,8 @@
 // == HEADER == //
 
 .site-header {
+//  @include rem( padding-top, spacer() );
+//  @include scut-center-block( $width-content );
   position: relative; // For use with the skip link and menu toggle
   @include k-media-above( break(large) ) {
     max-width: $width-content - $width-medium;
@@ -85,14 +87,8 @@
   @include k-media-above( break(large) ) {
     @include rem( padding-bottom, spacer() );
   }
-  &:hover .site-description { // Show site description on hover
-    opacity: 1;
-    transition: opacity .6s ease;
-    transition-delay: .43s;
-  }
-}
+ }
 .site-title {
-  @extend %clearfix-below;
   @include font-style(site-title);
   svg.icon {
     @include rem( margin, 0 4px 0 -3px );
@@ -115,15 +111,11 @@
     }
   }
 }
-.site-description {
-  @include font-style(site-description);
-  @include scut-hide-visually; // No description in this theme
-}
 .site-interface { // Site interface: the toolbar/menu at top right
   //display: block;
   @extend %clearfix-below;
   @include k-media-below( break(medium) ) {
-    margin-top: spacer(-3/2);
+    //margin-top: spacer(-1/2);
   }
   > * {
     @include k-media-below( break(large) ) {
@@ -133,6 +125,7 @@
 }
 .site-navigation {
   @extend %max-width-100; // Prevents hidden search box from overflowing container
+  display: none;
   @include k-media-above( break(medium) ) {
     display: block !important; // Prevents the responsive menu display state from hiding the menu on larger screens after a resize
   }
@@ -178,7 +171,11 @@ main {
   @extend %clearfix-above;
   @extend %links;
   @extend %spacer-below-double;
+  @include font-size(text-big);
   @include font-style(main-desc);
+  @include k-media-above( break(medium) ) {
+    @include font-size(text-bigger);
+  }
   p {
     @extend %spacer-below;
   }

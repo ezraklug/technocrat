@@ -4,29 +4,13 @@
 
 // == BUTTONS == //
 
-%button {
-  @include button-flat;
-}
-%button-1 {
-  @include button-capsule-flat;
-}
-%button-flat-theme-1 {
-  @include button-flat-theme;
-}
 button,
 .button,
-input[type="button"], // @TODO: eliminate `input`, introduce `button` elements instead
+input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-  @extend %button;
-  @extend %button-flat-theme-1;
-}
-button[type="submit"],
-input[type="submit"] {
-  // Nothing special
-}
-input[type="reset"] {
-  // Nothing special
+  @include button-flat;
+  @include button-flat-theme;
 }
 
 // Containers and groups by functionality
@@ -152,22 +136,20 @@ label {
 
 // Search form input field stretches to the width of the contain; adapted from: http://boulderinformationservices.wordpress.com/2011/02/02/input-field-and-submit-button-on-the-same-line-full-width/
 .search-form {
-  @include font-size(text-smallest); // Keeps the search button from getting too large for some reason; @TODO: puzzle this bug out
+  //@include font-size(text-smallest); // Keeps the search button from getting too large for some reason; @TODO: puzzle this bug out
   overflow: hidden; // Fixes weird IE display (July 8, 2015)
   width: 50%;
   .site-interface &,
   .widget & {
     width: 100%; // Search form in the navigation and sidebar stretches to fill
-/*=======
-  width: 60%;
+    /*width: 60%;
   .site-interface & {
     display: none;
     @include k-media-above( break(medium) ) {
       @include rem( margin-left, spacer(1/2) );
       display: block;
-      float: right;
-      max-width: 250px;
-      width: 100%;
+      flex: 1;
+      max-width: 400px;
     }
   }
   .site-navigation & {
@@ -175,8 +157,7 @@ label {
     width: 100%;
     @include k-media-above( break(medium) ) {
       display: none;
-    }
->>>>>>> 1407e92aa5a424e8a3a87fa705fad6784089376b*/
+    }*/
   }
 }
 .search-field-wrap {

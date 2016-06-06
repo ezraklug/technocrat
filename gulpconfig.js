@@ -159,13 +159,13 @@ module.exports = {
   , chunks: {
       header: [
         modules+'svg4everybody/dist/svg4everybody.js'
-      , src+'js/core-header.js'
+      , src+'js/header.js'
       ]
     , footer: [
         modules+'html5-history-api/history.js'
       , modules+'spin.js/spin.js'
       , modules+'spin.js/jquery.spin.js'
-      , modules+'svg.icon.js/svg.icon.js'
+      , modules+'svg-icon-js/svgIcon.js'
       , modules+'selectric/public/jquery.selectric.js'
       , modules+'timeago/jquery.timeago.js'
       , modules+'autosize/dist/autosize.js'
@@ -173,7 +173,7 @@ module.exports = {
       , src+'js/fontfaceobserver.js'
       , src+'js/responsive-menu.js'
       , src+'js/skip-link-focus-fix.js'
-      , src+'js/core-footer.js'
+      , src+'js/footer.js'
       ]
     , contact: [
         modules+'jquery-validation/dist/jquery.validate.js'
@@ -290,13 +290,11 @@ module.exports = {
       , 'feed'
       , 'fonts' // *
       , 'imagery' // *
-      //, 'lingual'
       , 'markdown'
       , 'meta' // *
       //, 'places'
       //, 'photo-meta'
       //, 'post-formats'
-      , 'quick-terms'
       //, 'recordpress'
       , 'related'
       , 'search' // *

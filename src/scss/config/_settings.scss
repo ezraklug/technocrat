@@ -29,7 +29,7 @@ $_metadata: (
 , theme-author:             "Alexander Synaptic"
 , theme-author-uri:         "http://synapticism.com"
 , theme-description:        "Alexander Synaptic"
-, theme-version:            "0.6.0"
+, theme-version:            "0.7.0"
 , theme-license:            "GPLv3"
 , theme-license-uri:        "https://www.gnu.org/copyleft/gpl.txt"
 , theme-tags:               (light, gray, white, one-column, two-columns, right-sidebar, fixed-layout, responsive-layout, custom-menu, featured-images, microformats, post-formats, theme-options, translation-ready)
@@ -51,10 +51,11 @@ $_modules: (
   gallery-shortcode:  false // WordPress core; activation creates some useless duplicate styles; disable if you don't use [gallery]
 , lazysizes:          false
 , magnific-popup:     false
+, one-column:         true
 , post-formats:       false
 , prism:              true
-, one-column:         false
-, ubik-links:         true
+, quotes:             true
+, ubik-links:         false
 , ubik-photo-meta:    false
 , ubik-places:        false
 , ubik-recordpress:   false
@@ -65,12 +66,13 @@ $_modules: (
 
 @if $dev {
   $_modules: (
-    gallery-shortcode:  true // WordPress core; activation creates some useless duplicate styles
+    gallery-shortcode:  false // WordPress core; activation creates some useless duplicate styles
   , lazysizes:          true
   , magnific-popup:     true
+  , one-column:         true
   , post-formats:       true
   , prism:              true
-  , one-column:         true
+  , quotes:             true
   , ubik-links:         true
   , ubik-photo-meta:    true
   , ubik-places:        true

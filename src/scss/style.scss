@@ -15,7 +15,7 @@ Text Domain: #{metadata(theme-text-domain)}
 Domain Path: #{metadata(theme-text-domain-path)}
 */
 
-// These stylesheet partials are authored without regard for vendor prefixes; be sure to run the output through an autoprefixer e.g. https://github.com/ai/autoprefixer
+// The following Sass partials are written without regard for vendor prefixes; be sure to use Autoprefixer: https://github.com/ai/autoprefixer
 @import "reset";          // Reset (an abridged version)
 @import "normalize";      // Normalize
 @import "helpers";        // Helpers (silent selectors)
@@ -32,16 +32,7 @@ Domain Path: #{metadata(theme-text-domain-path)}
 @import "widgets";        // Widgets
 @import "various";        // Various stuff that doesn't fit anywhere else
 
-
-
-// == MODULES == //
-
+// The following Sass partials are optional
 @import "formats";        // Post formats: aside, link, status, etc.
 @import "modules";        // Optional modules
 @import "views";          // Views module
-
-
-
-// == EXPERIMENTAL == //
-
-@import "print";      // Print styles from Twenty Twelve

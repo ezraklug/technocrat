@@ -283,7 +283,7 @@ $_fonts: (
 // Font stack mixin for use with Font Face Observer (to improve web font performance)
 @mixin font-observer($stack: body) {
   font-family: font(#{$stack}-system);
-  .wf-active-#{$stack} & {
-    font-family: font(#{$stack}-web);
+  .wf-active & {
+    font-family: font(#{$stack}-full);
   }
 }

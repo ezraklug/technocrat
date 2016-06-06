@@ -1,6 +1,6 @@
 <?php // ==== SITE ==== //
 
-// == HEADER INTERFACE == //
+// == HEADER == //
 
 // Header buttons; add buttons using filter hooks just like with entry content
 // @filter: pendrell_header_buttons
@@ -9,7 +9,7 @@ function pendrell_header_buttons() {
   if ( !empty( $buttons ) )
     echo '<div class="buttons buttons-merge buttons-header">' . $buttons . '</div>';
 }
-add_action( 'pendrell_header_interface', 'pendrell_header_buttons', 20 );
+add_action( 'pendrell_header_interface', 'pendrell_header_buttons', 10 );
 
 // Skip to content link; this should appear first in the HTML and is floated to the left to accommodate
 function pendrell_header_skip_to_content( $buttons ) {
@@ -21,17 +21,13 @@ add_action( 'pendrell_header_interface', 'pendrell_header_skip_to_content', 5 );
 function pendrell_header_responsive_menu() {
   echo '<div class="buttons buttons-menu-toggle"><button id="menu-toggle" class="menu-toggle">' . pendrell_icon_text( 'menu-toggle', __( 'Menu', 'pendrell' ) ) . '</button></div>';
 }
-add_action( 'pendrell_header_interface', 'pendrell_header_responsive_menu', 10 );
+add_action( 'pendrell_header_interface', 'pendrell_header_responsive_menu', 99 );
 
 // Responsive search bar; hidden except on small screens; @TODO: reduce this to only one search form?
 function pendrell_header_search() {
   get_search_form();
 }
 add_action( 'pendrell_header_interface', 'pendrell_header_search', 25 );
-
-
-
-// == HEADER MENU == //
 
 // Responsive menu wrapped in a container to handle the fact that `wp_nav_menu` defaults back to `wp_page_menu` when no menu is specified
 function pendrell_header_menu() {
@@ -41,7 +37,7 @@ add_action( 'pendrell_header_navigation', 'pendrell_header_menu', 20 );
 
 
 
-// == FOOTER MENU == //
+// == FOOTER == //
 
 // Generic footer menu
 function pendrell_footer_menu() {

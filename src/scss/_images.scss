@@ -5,8 +5,7 @@
 .site-content img {
   @include border-rounded;
 
-  // Force images to adhere to container width
-  // This is usually paired with `height: auto;` but we are managing height with Ubik Imagery in this theme
+  // Force images to adhere to container width; this is usually paired with `height: auto;` but we are managing height with Ubik Imagery in this theme
   max-width: 100%;
   &:not(.ubik-img) {
     height: auto;

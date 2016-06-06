@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> class="wf-active">
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -15,7 +15,6 @@
 			<header id="masthead" class="site-header">
 				<div class="site-branding">
 					<h1 class="site-title"><a href="<?php echo esc_url( site_url( '/' ) ); ?>" rel="home"><?php echo ubik_svg_icon_text( 'typ-spiral', get_bloginfo( 'name' ) ); ?></a></h1>
-					<h2 class="site-description"><?php bloginfo( 'description' ); ?></h2>
 				</div>
 				<div id="site-interface" class="site-interface">
 					<?php do_action( 'pendrell_header_interface' ); ?>

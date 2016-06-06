@@ -1,34 +1,13 @@
 <?php // ==== UBIK ==== //
 
-// This file is an adapter for the Ubik suite of components; it contains all the little scraps of code to integrate Ubik into Pendrell
-
-// For testing purposes only; switches everything on for development
-if ( WP_LOCAL_DEV && 1==0 ) {
-  defined( 'PENDRELL_UBIK_ADMIN' )          || define( 'PENDRELL_UBIK_ADMIN', true );
-  defined( 'PENDRELL_UBIK_ANALYTICS' )      || define( 'PENDRELL_UBIK_ANALYTICS', true );
-  defined( 'PENDRELL_UBIK_EXCLUDER' )       || define( 'PENDRELL_UBIK_EXCLUDER', true );
-  defined( 'PENDRELL_UBIK_FEED' )           || define( 'PENDRELL_UBIK_FEED', true );
-  defined( 'PENDRELL_UBIK_LINGUAL' )        || define( 'PENDRELL_UBIK_LINGUAL', true );
-  defined( 'PENDRELL_UBIK_MARKDOWN' )       || define( 'PENDRELL_UBIK_MARKDOWN', true );
-  defined( 'PENDRELL_UBIK_PHOTO_META' )     || define( 'PENDRELL_UBIK_PHOTO_META', true );
-  defined( 'PENDRELL_UBIK_PLACES' )         || define( 'PENDRELL_UBIK_PLACES', true );
-  defined( 'PENDRELL_UBIK_QUICK_TERMS' )    || define( 'PENDRELL_UBIK_QUICK_TERMS', true );
-  defined( 'PENDRELL_UBIK_RECORDPRESS' )    || define( 'PENDRELL_UBIK_RECORDPRESS', true );
-  defined( 'PENDRELL_UBIK_RELATED' )        || define( 'PENDRELL_UBIK_RELATED', true );
-  defined( 'PENDRELL_UBIK_SEO' )            || define( 'PENDRELL_UBIK_SEO', true );
-  defined( 'PENDRELL_UBIK_SERIES' )         || define( 'PENDRELL_UBIK_SERIES', true );
-}
-
 // Ubik is a collection of lightwight WordPress components; use these master switches to turn these optional components on or off
 defined( 'PENDRELL_UBIK_ADMIN' )          || define( 'PENDRELL_UBIK_ADMIN', true );
 defined( 'PENDRELL_UBIK_ANALYTICS' )      || define( 'PENDRELL_UBIK_ANALYTICS', true );
 defined( 'PENDRELL_UBIK_EXCLUDER' )       || define( 'PENDRELL_UBIK_EXCLUDER', false );
 defined( 'PENDRELL_UBIK_FEED' )           || define( 'PENDRELL_UBIK_FEED', false );
-defined( 'PENDRELL_UBIK_LINGUAL' )        || define( 'PENDRELL_UBIK_LINGUAL', false );
 defined( 'PENDRELL_UBIK_MARKDOWN' )       || define( 'PENDRELL_UBIK_MARKDOWN', true );
 defined( 'PENDRELL_UBIK_PHOTO_META' )     || define( 'PENDRELL_UBIK_PHOTO_META', false );
 defined( 'PENDRELL_UBIK_PLACES' )         || define( 'PENDRELL_UBIK_PLACES', false );
-defined( 'PENDRELL_UBIK_QUICK_TERMS' )    || define( 'PENDRELL_UBIK_QUICK_TERMS', true );
 defined( 'PENDRELL_UBIK_RECORDPRESS' )    || define( 'PENDRELL_UBIK_RECORDPRESS', false );
 defined( 'PENDRELL_UBIK_RELATED' )        || define( 'PENDRELL_UBIK_RELATED', true );
 defined( 'PENDRELL_UBIK_SEO' )            || define( 'PENDRELL_UBIK_SEO', true );
@@ -36,9 +15,9 @@ defined( 'PENDRELL_UBIK_SERIES' )         || define( 'PENDRELL_UBIK_SERIES', fal
 
 // Dependent on the Pendrell core post formats switch
 if ( PENDRELL_POST_FORMATS ) {
-  defined( 'PENDRELL_UBIK_POST_FORMATS' )   || define( 'PENDRELL_UBIK_POST_FORMATS', true );
+  define( 'PENDRELL_UBIK_POST_FORMATS', true );
 } else {
-  defined( 'PENDRELL_UBIK_POST_FORMATS' )   || define( 'PENDRELL_UBIK_POST_FORMATS', false );
+  define( 'PENDRELL_UBIK_POST_FORMATS', false );
 }
 
 // Modules path; a shortcut for use below
@@ -48,21 +27,18 @@ $path_modules = trailingslashit( get_stylesheet_directory() ) . 'modules/';
 
 // == ADMIN == //
 
-if ( is_admin() ) {
-  if ( PENDRELL_UBIK_ADMIN ) {
-    define( 'UBIK_ADMIN_POST_LIST_THUMBS', true );
-    define( 'UBIK_ADMIN_TAG_FILTER', true );
-    define( 'UBIK_ADMIN_TERM_EDIT_STYLE', true );
-    define( 'UBIK_ADMIN_USER_CONTACT_METHOD', true );
-    define( 'UBIK_ADMIN_USER_ALLOW_HTML', true );
-    if ( WP_DEBUG ) {
-      define( 'UBIK_ADMIN_VIEW_ALL_SETTINGS', true );
-      define( 'UBIK_ADMIN_VIEW_ALL_SHORTCODES', true );
-    }
-    require_once( $path_modules . 'ubik-admin/ubik-admin.php' );
+if ( PENDRELL_UBIK_ADMIN && is_admin() ) {
+  //define( 'UBIK_ADMIN_SANITIZE_SLUG', true ); // Remove non-Latin characters from slugs; for use with bilingual blogs
+  define( 'UBIK_ADMIN_POST_LIST_THUMBS', true );
+  define( 'UBIK_ADMIN_TAG_FILTER', true );
+  define( 'UBIK_ADMIN_TERM_EDIT_STYLE', true );
+  define( 'UBIK_ADMIN_USER_CONTACT_METHOD', true );
+  define( 'UBIK_ADMIN_USER_ALLOW_HTML', true );
+  if ( WP_DEBUG ) {
+    define( 'UBIK_ADMIN_VIEW_ALL_SETTINGS', true );
+    define( 'UBIK_ADMIN_VIEW_ALL_SHORTCODES', true );
   }
-  if ( PENDRELL_UBIK_QUICK_TERMS )
-    require_once( $path_modules . 'ubik-quick-terms/ubik-quick-terms.php' );
+  require_once( $path_modules . 'ubik-admin/ubik-admin.php' );
 }
 
 
@@ -116,7 +92,6 @@ add_action( 'pendrell_footer_colophon', 'pendrell_colophon' );
 
 define( 'UBIK_COMMENTS_ALLOWED_TAGS', true );
 define( 'UBIK_COMMENTS_ATTACHMENTS_OFF', true );
-//define( 'UBIK_COMMENTS_LINK_SHOW_NONE', true );
 define( 'UBIK_COMMENTS_PINGBACKS_OFF', true );
 require_once( $path_modules . 'ubik-comments/ubik-comments.php' );
 
@@ -150,8 +125,8 @@ if ( PENDRELL_UBIK_FEED ) {
 // == FONTS == * //
 
 define( 'UBIK_FONTS_GOOGLE', 'Oxygen:300,300italic,400,400italic,700,700italic|Ubuntu:300,400,700' );
+define( 'UBIK_FONTS_GOOGLE_INLINE', true );
 require_once( $path_modules . 'ubik-fonts/ubik-fonts.php' );
-add_filter( 'ubik_fonts_google_protocol', '__return_empty_string' );
 
 
 
@@ -159,19 +134,6 @@ add_filter( 'ubik_fonts_google_protocol', '__return_empty_string' );
 
 define( 'UBIK_IMAGERY_URL_MORE_SHORTCUT', true );
 require_once( $path_modules . 'ubik-imagery.php' );
-
-
-
-// == LINGUAL == //
-
-if ( PENDRELL_UBIK_LINGUAL ) {
-  define( 'UBIK_LINGUAL_SANITIZE_SLUG', true );
-  require_once( $path_modules . 'ubik-lingual/ubik-lingual.php' );
-  add_filter( 'the_title', 'ubik_lingual_pinyin_strip_marks' ); // Content titles
-  add_filter( 'ubik_title', 'ubik_lingual_pinyin_strip_marks' ); // Page titles
-  if ( PENDRELL_UBIK_PLACES )
-    add_filter( 'ubik_places_title', 'ubik_lingual_pinyin_strip_marks' ); // Small header in the faux widget
-}
 
 
 
@@ -230,6 +192,7 @@ if ( PENDRELL_UBIK_SEO ) {
   define( 'UBIK_SEO_YOAST_NO_POST_FILTER', true );
   define( 'UBIK_SEO_YOAST_PINTEREST_AUTH', true );
   define( 'UBIK_SEO_YOAST_TITLE_CLEANER', true );
+  define( 'UBIK_SEO_YOAST_TWITTER', true );
   require_once( $path_modules . 'ubik-seo/ubik-seo.php' );
 }
 
@@ -258,7 +221,6 @@ if ( UBIK_SVG_ICONS_PATH && UBIK_SVG_ICONS_URL === false )
 
 // == TERMS * == //
 
-//define( 'UBIK_TERMS_CATEGORIZED', true ); // This blog has categories
 define( 'UBIK_TERMS_TAG_SHORTCODE', true );
 require_once( $path_modules . 'ubik-terms/ubik-terms.php' );
 
@@ -280,18 +242,14 @@ function pendrell_terms_edit_link( $buttons ) {
 }
 add_action( 'pendrell_archive_buttons', 'pendrell_terms_edit_link' );
 
-// Don't display categories if the blog isn't categorized
 if ( !ubik_terms_categorized() )
-  add_filter( 'ubik_meta_categories', '__return_empty_string' );
+  add_filter( 'ubik_meta_categories', '__return_empty_string' ); // Don't display categories if the blog isn't categorized
 
 
 
 // == TEXT * == //
 
 require_once( $path_modules . 'ubik-text/ubik-text.php' );
-//add_filter( 'the_content', 'ubik_text_replace', 99 ); // Commented out as simple search and replace doesn't always yield desireable results
-//add_filter( 'the_excerpt', 'ubik_text_replace', 99 );
-//add_filter( 'comment_text', 'ubik_text_replace', 99 );
 add_filter( 'the_content_feed', 'ubik_text_strip_asides' );
 add_filter( 'the_excerpt_rss', 'ubik_text_strip_asides' );
 add_filter( 'the_content', 'ubik_text_strip_more_orphan', 99 ); // Strip paragraph tags from orphaned more tags
